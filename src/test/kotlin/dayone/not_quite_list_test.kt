@@ -10,14 +10,30 @@ class NotQuiteListTest {
 
   @Test
   fun testExampleInputs() {
-    assertEquals(computeFloor("(())"), 0)
-    assertEquals(computeFloor("()()"), 0)
-    assertEquals(computeFloor("((("), 3)
-    assertEquals(computeFloor("(()(()("), 3)
-    assertEquals(computeFloor("))((((("), 3)
-    assertEquals(computeFloor("())"), -1)
-    assertEquals(computeFloor("))("), -1)
-    assertEquals(computeFloor(")))"), -3)
-    assertEquals(computeFloor(")())())"), -3)
+    assertEquals(0, computeFloor("(())"))
+    assertEquals(0, computeFloor("()()"))
+    assertEquals(3, computeFloor("((("))
+    assertEquals(3, computeFloor("(()(()("))
+    assertEquals(3, computeFloor("))((((("))
+    assertEquals(-1, computeFloor("())"))
+    assertEquals(-1, computeFloor("))("))
+    assertEquals(-3, computeFloor(")))"))
+    assertEquals(-3, computeFloor(")())())"))
+  }
+
+  @Test
+  fun testNegativeFloor() {
+    assertEquals(1, firstBasementPosition(")"))
+    assertEquals(5, firstBasementPosition("()())"))
+
+    assertEquals(0, firstBasementPosition("(())"))
+    assertEquals(0, firstBasementPosition("()()"))
+    assertEquals(0, firstBasementPosition("((("))
+    assertEquals(0, firstBasementPosition("(()(()("))
+    assertEquals(1, firstBasementPosition("))((((("))
+    assertEquals(3, firstBasementPosition("())"))
+    assertEquals(1, firstBasementPosition("))("))
+    assertEquals(1, firstBasementPosition(")))"))
+    assertEquals(1, firstBasementPosition(")())())"))
   }
 }
