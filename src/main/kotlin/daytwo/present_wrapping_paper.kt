@@ -1,6 +1,6 @@
 package daytwo
 
-import multipleLineInput
+import fromMultipleLineInput
 
 fun requiredPaper(input: String): Int {
   val (length, height, width) = input.split("x").map { it.toInt() }
@@ -26,7 +26,9 @@ data class Face(val width: Int, val height: Int) {
 }
 
 fun main(args: Array<String>) {
-  multipleLineInput("daytwo", "pretent_wrapping_paper_input.txt") { fileContent ->
+  val requiredWrappingPaper = fromMultipleLineInput("daytwo", "pretent_wrapping_paper_input.txt") { fileContent ->
     fileContent.map { requiredPaper(it) }.sum()
   }
+
+  println(requiredWrappingPaper)
 }

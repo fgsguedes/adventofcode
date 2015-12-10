@@ -1,6 +1,6 @@
 package dayone
 
-import oneLineInput
+import fromOneLineInput
 
 fun characterInstruction(char: Char) = when (char) {
   '(' -> 1
@@ -25,11 +25,14 @@ data class Counter(private var floor: Int = 0) {
 
 fun main(args: Array<String>) {
   val currentDay = "dayone"
-  oneLineInput(currentDay, "not_quite_lisp.txt") {
+  val targetFloor = fromOneLineInput(currentDay, "not_quite_lisp.txt") {
     computeFloor(it)
   }
 
-  oneLineInput(currentDay, "not_quite_lisp_part_two.txt") {
+  val firstBasementPosition = fromOneLineInput(currentDay, "not_quite_lisp_part_two.txt") {
     firstBasementPosition(it)
   }
+
+  println(targetFloor)
+  println(firstBasementPosition)
 }
