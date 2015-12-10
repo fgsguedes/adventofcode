@@ -13,4 +13,10 @@ class PresentWrappingPaperTest {
     assertEquals(58, requiredPaper("2x3x4"))
     assertEquals(43, requiredPaper("1x1x10"))
   }
+
+  @Test
+  fun lala() {
+    assertEquals(34, requiredRibbon("2x3x4"))
+    assertEquals(14, requiredRibbon("1x1x10"))
+  }
 }

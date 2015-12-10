@@ -2,39 +2,46 @@ package daytwo
 
 import fromMultipleLineInput
 
+fun boxFromInput(input: String): Box {
+  val (length, height, width) = input.split("x").map { it.toInt() }
+  return Box(length, height, width)
+}
+
 fun requiredPaper(input: String): Int {
-  val box = Box.fromInputString(input)
+  val box = boxFromInput(input)
   return box.area + box.smallerFace.area
 }
 
-data class Box(val front: Face, val top: Face, val side: Face) {
+fun requiredRibbon(input: String): Int {
+  val box = boxFromInput(input)
+  return box.smallerFace.perimeter + box.height * box.width * box.length
+}
 
-  companion object {
-    fun fromInputString(input: String): Box {
-      val (length, height, width) = input.split("x").map { it.toInt() }
+data class Box(val length: Int, val height: Int, val width: Int) {
 
-      return Box(
-          Face(length, height),
-          Face(length, width),
-          Face(height, width))
-    }
-  }
+  private val front = Face(length, height)
+  private val top = Face(length, width)
+  private val side = Face(height, width)
 
-  private val faces = arrayOf(front, top, side).sortedBy { it.area }
-
-  val smallerFace = faces.first()
+  val smallerFace = arrayOf(front, top, side).sortedBy { it.area }.first()
   val area = 2 * front.area + 2 * top.area + 2 * side.area
 }
 
 data class Face(val width: Int, val height: Int) {
   val area = width * height
+  val perimeter = 2 * width + 2 * height
 }
 
 
 fun main(args: Array<String>) {
-  val requiredWrappingPaper = fromMultipleLineInput("daytwo", "pretent_wrapping_paper_input.txt") { fileContent ->
+  val requiredWrappingPaper = fromMultipleLineInput("daytwo", "present_wrapping_paper_input.txt") { fileContent ->
     fileContent.map { requiredPaper(it) }.sum()
   }
 
+  val requiredRibbon = fromMultipleLineInput("daytwo", "present_wrapping_ribbon_input.txt") { fileContent ->
+    fileContent.map { requiredRibbon(it) }.sum()
+  }
+
   println(requiredWrappingPaper)
+  println(requiredRibbon)
 }
