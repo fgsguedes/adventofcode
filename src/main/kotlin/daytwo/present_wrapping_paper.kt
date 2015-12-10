@@ -3,17 +3,22 @@ package daytwo
 import fromMultipleLineInput
 
 fun requiredPaper(input: String): Int {
-  val (length, height, width) = input.split("x").map { it.toInt() }
-
-  val box = Box(
-      Face(length, height),
-      Face(length, width),
-      Face(height, width))
-
+  val box = Box.fromInputString(input)
   return box.area() + box.smallerFace().area()
 }
 
 data class Box(val front: Face, val top: Face, val side: Face) {
+
+  companion object {
+    fun fromInputString(input: String): Box {
+      val (length, height, width) = input.split("x").map { it.toInt() }
+
+      return Box(
+          Face(length, height),
+          Face(length, width),
+          Face(height, width))
+    }
+  }
 
   val faces = arrayOf(front, top, side).sortedBy { it.area() }
 
