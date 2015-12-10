@@ -9,7 +9,7 @@ import org.junit.runners.JUnit4
 class NotQuiteLispTest {
 
   @Test
-  fun testExampleInputs() {
+  fun testComputeFloorExampleInput() {
     assertEquals(0, computeFloor("(())"))
     assertEquals(0, computeFloor("()()"))
     assertEquals(3, computeFloor("((("))
@@ -22,7 +22,7 @@ class NotQuiteLispTest {
   }
 
   @Test
-  fun testNegativeFloor() {
+  fun testBasementPositionExampleInput() {
     assertEquals(1, firstBasementPosition(")"))
     assertEquals(5, firstBasementPosition("()())"))
 

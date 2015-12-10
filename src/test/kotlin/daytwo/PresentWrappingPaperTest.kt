@@ -9,13 +9,13 @@ import kotlin.test.assertEquals
 class PresentWrappingPaperTest {
 
   @Test
-  fun testExampleImputs() {
+  fun testRequiredPaperExampleInput() {
     assertEquals(58, requiredPaper("2x3x4"))
     assertEquals(43, requiredPaper("1x1x10"))
   }
 
   @Test
-  fun lala() {
+  fun testRequiredRibbonExampleInput() {
     assertEquals(34, requiredRibbon("2x3x4"))
     assertEquals(14, requiredRibbon("1x1x10"))
   }
