@@ -1,7 +1,6 @@
 package dayone
 
-import java.nio.file.Files
-import java.nio.file.Paths
+import oneLineInput
 
 fun characterInstruction(char: Char) = when (char) {
   '(' -> 1
@@ -25,18 +24,12 @@ data class Counter(private var floor: Int = 0) {
 
 
 fun main(args: Array<String>) {
-  execute("not_quite_lisp.txt") {
+  val currentDay = "dayone"
+  oneLineInput(currentDay, "not_quite_lisp.txt") {
     computeFloor(it)
   }
 
-  execute("not_quite_lisp_part_two.txt") {
+  oneLineInput(currentDay, "not_quite_lisp_part_two.txt") {
     firstBasementPosition(it)
   }
-}
-
-fun execute(inputeFileName: String, f: (String) -> Any) {
-  val path = Paths.get("src", "main", "resources", "dayone", inputeFileName)
-  val input = String(Files.readAllBytes(path))
-  val resultingFloor = f(input)
-  println(resultingFloor)
 }
