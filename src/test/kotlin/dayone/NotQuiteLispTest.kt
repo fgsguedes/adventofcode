@@ -6,7 +6,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class NotQuiteListTest {
+class NotQuiteLispTest {
 
   @Test
   fun testExampleInputs() {
