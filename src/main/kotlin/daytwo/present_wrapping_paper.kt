@@ -1,14 +1,24 @@
 package daytwo
 
-fun computeArea(input: String) {
+fun requiredPaper(input: String): Int {
   val (length, height, width) = input.split("x").map { it.toInt() }
 
-  computeArea(length, height, width)
+  val box = Box(
+      Face(length, height),
+      Face(length, width),
+      Face(height, width))
+
+  return box.area() + box.smallerFace().area()
 }
 
-fun computeArea(length: Int, height: Int, width: Int) = 2 * length * width +
-    2 * width * height +
-    2 * height * length +
-    smallerSideArea(length, height, width)
+data class Box(val front: Face, val top: Face, val side: Face) {
 
-fun smallerSideArea(length: Int, height: Int, width: Int) = 0
+  val faces = arrayOf(front, top, side).sortedBy { it.area() }
+
+  fun area() = 2 * front.area() + 2 * top.area() + 2 * side.area()
+  fun smallerFace() = faces.first()
+}
+
+data class Face(val width: Int, val height: Int) {
+  fun area() = width * height
+}
