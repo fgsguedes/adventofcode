@@ -21,9 +21,15 @@ fun mineAdventCoin(input: String) = (1..Int.MAX_VALUE).first {
   input.concat(it.toString()).toMd5().startsWith("00000")
 }
 
+fun mineAdventCoin2(input: String) = (1..Int.MAX_VALUE).first {
+  input.concat(it.toString()).toMd5().startsWith("000000")
+}
+
 
 fun main(args: Array<String>) {
   val output = mineAdventCoin("ckczppom")
+  val output2 = mineAdventCoin2("ckczppom")
 
   println(output)
+  println(output2)
 }
