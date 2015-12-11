@@ -2,6 +2,8 @@ package daythree
 
 import fromOneLineInput
 
+fun Int.isOdd() = this % 2 == 1
+
 data class House(val x: Int, val y: Int) {
 
   val northNeighbor: House by lazy { House(x, y + 1) }
@@ -10,35 +12,70 @@ data class House(val x: Int, val y: Int) {
   val eastNeighbor: House by lazy { House(x + 1, y) }
 }
 
-fun uniqueVisitedHouses(input: String): Int {
+fun santaAloneUniqueVisitedHouses(input: String): Int {
   val inputCharList = input.toCharArray().asList()
-  return uniqueVisitedHouses(inputCharList)
+  return uniqueVisitedHouses(inputCharList, ::toVisitedHouses)
 }
 
-private fun uniqueVisitedHouses(input: List<Char>) = toVisitedHouses(input).distinct().size
+fun withRobotUniqueVisitedHouses(input: String): Int {
+  val inputCharList = input.toCharArray().asList()
+  return uniqueVisitedHouses(inputCharList, ::toVisitedHousesWithRobot)
+}
+
+private fun uniqueVisitedHouses(input: List<Char>, f: (List<Char>) -> List<House>) = f(input).distinct().size
 
 private fun toVisitedHouses(input: List<Char>): List<House> {
 
-  var currentHouse = House(0, 0)
+  val initialHouse = House(0, 0)
 
-  return input.map {
-    currentHouse = when (it) {
-      '^' -> currentHouse.northNeighbor
-      'v' -> currentHouse.southNeighbor
-      '<' -> currentHouse.westNeighbor
-      '>' -> currentHouse.eastNeighbor
-      else -> throw IllegalArgumentException("Invalid input")
-    }
-
-    currentHouse
-  }
+  var currentHouse = initialHouse
+  return listOf(initialHouse)
+      .plus(input.map {
+        currentHouse = nextHouse(currentHouse, it)
+        currentHouse
+      })
 }
 
+private fun toVisitedHousesWithRobot(input: List<Char>): List<House> {
+
+  val initialHouse = House(0, 0)
+
+  var santaHouse = initialHouse
+  var robotHouse = initialHouse
+  val lala = listOf(initialHouse)
+      .plus(input.mapIndexed { index, c ->
+        when (index.isOdd()) {
+          true -> {
+            robotHouse = nextHouse(robotHouse, c)
+            robotHouse
+          }
+          else -> {
+            santaHouse = nextHouse(santaHouse, c)
+            santaHouse
+          }
+        }
+      })
+
+  return lala;
+}
+
+private fun nextHouse(currentHouse: House, moveInstruction: Char) = when (moveInstruction) {
+  '^' -> currentHouse.northNeighbor
+  'v' -> currentHouse.southNeighbor
+  '<' -> currentHouse.westNeighbor
+  '>' -> currentHouse.eastNeighbor
+  else -> throw IllegalArgumentException("Invalid input")
+}
 
 fun main(args: Array<String>) {
   val housesVisited = fromOneLineInput("daythree", "santa_delivery_input.txt") { fileContent ->
-    uniqueVisitedHouses(fileContent)
+    santaAloneUniqueVisitedHouses(fileContent)
+  }
+
+  val housesVisitedWithRobot = fromOneLineInput("daythree", "santa_with_robot_delivery_input.txt") { fileContent ->
+    withRobotUniqueVisitedHouses(fileContent)
   }
 
   println(housesVisited)
+  println(housesVisitedWithRobot)
 }

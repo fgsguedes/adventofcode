@@ -10,8 +10,15 @@ class SantaDeliveryTest {
 
   @Test
   fun testExampleInputs() {
-    assertEquals(2, uniqueVisitedHouses(">"))
-    assertEquals(4, uniqueVisitedHouses("^>v<"))
-    assertEquals(2, uniqueVisitedHouses("^v^v^v^v^v"))
+    assertEquals(2, santaAloneUniqueVisitedHouses(">"))
+    assertEquals(4, santaAloneUniqueVisitedHouses("^>v<"))
+    assertEquals(2, santaAloneUniqueVisitedHouses("^v^v^v^v^v"))
+  }
+
+  @Test
+  fun testSantaDeliveryWithRobot() {
+    assertEquals(3, withRobotUniqueVisitedHouses("^v"))
+    assertEquals(3, withRobotUniqueVisitedHouses("^>v<"))
+    assertEquals(11, withRobotUniqueVisitedHouses("^v^v^v^v^v"))
   }
 }
