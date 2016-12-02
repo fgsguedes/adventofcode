@@ -1,4 +1,4 @@
-package daythree
+package year2015.daythree
 
 import fromOneLineInput
 
@@ -56,7 +56,7 @@ private fun toVisitedHousesWithRobot(input: List<Char>): List<House> {
         }
       })
 
-  return lala;
+  return lala
 }
 
 private fun nextHouse(currentHouse: House, moveInstruction: Char) = when (moveInstruction) {
@@ -68,13 +68,8 @@ private fun nextHouse(currentHouse: House, moveInstruction: Char) = when (moveIn
 }
 
 fun main(args: Array<String>) {
-  val housesVisited = fromOneLineInput("daythree", "santa_delivery_input.txt") { fileContent ->
-    santaAloneUniqueVisitedHouses(fileContent)
-  }
-
-  val housesVisitedWithRobot = fromOneLineInput("daythree", "santa_with_robot_delivery_input.txt") { fileContent ->
-    withRobotUniqueVisitedHouses(fileContent)
-  }
+  val housesVisited = fromOneLineInput("daythree", "santa_delivery_input.txt", ::santaAloneUniqueVisitedHouses)
+  val housesVisitedWithRobot = fromOneLineInput("daythree", "santa_with_robot_delivery_input.txt", ::withRobotUniqueVisitedHouses)
 
   println(housesVisited)
   println(housesVisitedWithRobot)

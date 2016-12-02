@@ -1,4 +1,4 @@
-package dayone
+package year2015.dayone
 
 import fromOneLineInput
 
@@ -8,7 +8,7 @@ fun characterInstruction(char: Char) = when (char) {
   else -> 0 // Should never happen
 }
 
-fun computeFloor(input: String) = input.map { characterInstruction(it) }.sum()
+fun computeFloor(input: String) = input.map(::characterInstruction).sum()
 
 fun firstBasementPosition(input: String): Int {
   val counter = Counter()
@@ -25,13 +25,8 @@ data class Counter(private var floor: Int = 0) {
 
 fun main(args: Array<String>) {
   val currentDay = "dayone"
-  val targetFloor = fromOneLineInput(currentDay, "not_quite_lisp.txt") {
-    computeFloor(it)
-  }
-
-  val firstBasementPosition = fromOneLineInput(currentDay, "not_quite_lisp_part_two.txt") {
-    firstBasementPosition(it)
-  }
+  val targetFloor = fromOneLineInput(currentDay, "not_quite_lisp.txt", ::computeFloor)
+  val firstBasementPosition = fromOneLineInput(currentDay, "not_quite_lisp_part_two.txt", ::firstBasementPosition)
 
   println(targetFloor)
   println(firstBasementPosition)

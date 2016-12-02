@@ -1,9 +1,9 @@
-package daythree
+package year2015.daythree
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import kotlin.test.assertEquals
 
 @RunWith(JUnit4::class)
 class SantaDeliveryTest {

@@ -1,10 +1,10 @@
-package dayfour
+package year2015.dayfour
 
 import java.math.BigInteger
 import java.security.MessageDigest
 
 fun String.toMd5(): String {
-  val messageDigest = MessageDigest.getInstance("MD5");
+  val messageDigest = MessageDigest.getInstance("MD5")
   val bytes = messageDigest.digest(this.toByteArray())
   val bigInt = BigInteger(1, bytes).toString(16)
 
@@ -18,11 +18,11 @@ fun String.toMd5(): String {
 }
 
 fun mineAdventCoin(input: String) = (1..Int.MAX_VALUE).first {
-  input.concat(it.toString()).toMd5().startsWith("00000")
+  (input + it).toMd5().startsWith("00000")
 }
 
 fun mineAdventCoin2(input: String) = (1..Int.MAX_VALUE).first {
-  input.concat(it.toString()).toMd5().startsWith("000000")
+  (input + it).toMd5().startsWith("000000")
 }
 
 

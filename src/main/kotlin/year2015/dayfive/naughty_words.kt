@@ -1,4 +1,4 @@
-package dayfive
+package year2015.dayfive
 
 import fromMultipleLineInput
 import kotlin.text.Regex
@@ -24,7 +24,7 @@ fun String.isNice(): Boolean {
 
 fun main(args: Array<String>) {
   val naughtyWords = fromMultipleLineInput("dayfive", "naughty_words_input.txt") { fileContent ->
-    fileContent.filter { it.isNice() }.count()
+    fileContent.filter(String::isNice).count()
   }
 
   println(naughtyWords)
