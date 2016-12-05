@@ -1,4 +1,4 @@
-package year2015.dayfour
+package year2015.day4
 
 import java.math.BigInteger
 import java.security.MessageDigest

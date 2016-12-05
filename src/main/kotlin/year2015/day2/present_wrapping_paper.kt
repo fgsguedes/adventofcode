@@ -1,4 +1,4 @@
-package year2015.daytwo
+package year2015.day2
 
 import fromMultipleLineInput
 
@@ -34,11 +34,11 @@ data class Face(val width: Int, val height: Int) {
 
 
 fun main(args: Array<String>) {
-  val requiredWrappingPaper = fromMultipleLineInput("daytwo", "present_wrapping_paper_input.txt") { fileContent ->
+  val requiredWrappingPaper = fromMultipleLineInput(2015, 2, "present_wrapping_paper_input.txt") { fileContent ->
     fileContent.map(::requiredPaper).sum()
   }
 
-  val requiredRibbon = fromMultipleLineInput("daytwo", "present_wrapping_ribbon_input.txt") { fileContent ->
+  val requiredRibbon = fromMultipleLineInput(2015, 2, "present_wrapping_ribbon_input.txt") { fileContent ->
     fileContent.map(::requiredRibbon).sum()
   }
 

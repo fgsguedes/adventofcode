@@ -1,4 +1,4 @@
-package year2015.dayone
+package year2015.day1
 
 import fromOneLineInput
 
@@ -24,9 +24,8 @@ data class Counter(private var floor: Int = 0) {
 
 
 fun main(args: Array<String>) {
-  val currentDay = "dayone"
-  val targetFloor = fromOneLineInput(currentDay, "not_quite_lisp.txt", ::computeFloor)
-  val firstBasementPosition = fromOneLineInput(currentDay, "not_quite_lisp_part_two.txt", ::firstBasementPosition)
+  val targetFloor = fromOneLineInput(2015, 1, "not_quite_lisp.txt", ::computeFloor)
+  val firstBasementPosition = fromOneLineInput(2015, 1, "not_quite_lisp_part_two.txt", ::firstBasementPosition)
 
   println(targetFloor)
   println(firstBasementPosition)

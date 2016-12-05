@@ -1,4 +1,4 @@
-package year2015.daythree
+package year2015.day3
 
 import fromOneLineInput
 
@@ -68,8 +68,8 @@ private fun nextHouse(currentHouse: House, moveInstruction: Char) = when (moveIn
 }
 
 fun main(args: Array<String>) {
-  val housesVisited = fromOneLineInput("daythree", "santa_delivery_input.txt", ::santaAloneUniqueVisitedHouses)
-  val housesVisitedWithRobot = fromOneLineInput("daythree", "santa_with_robot_delivery_input.txt", ::withRobotUniqueVisitedHouses)
+  val housesVisited = fromOneLineInput(2015, 3, "santa_delivery_input.txt", ::santaAloneUniqueVisitedHouses)
+  val housesVisitedWithRobot = fromOneLineInput(2015, 3, "santa_with_robot_delivery_input.txt", ::withRobotUniqueVisitedHouses)
 
   println(housesVisited)
   println(housesVisitedWithRobot)

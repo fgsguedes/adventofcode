@@ -1,4 +1,4 @@
-package year2015.dayfive
+package year2015.day5
 
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
