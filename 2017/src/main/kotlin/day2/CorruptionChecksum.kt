@@ -11,9 +11,7 @@ fun calcCheckSum(input: List<List<Int>>): Int {
     row.fold(MAX_VALUE to MIN_VALUE) { (currentMin, currentMax), rowElement ->
       min(rowElement, currentMin) to max(rowElement, currentMax)
     }
-  }.map { (min, max) ->
-    max - min
-  }.sum()
+  }.sumBy { (min, max) -> max - min }
 }
 
 fun calcCheckSumPart2(input: List<List<Int>>): Int {
@@ -23,10 +21,8 @@ fun calcCheckSumPart2(input: List<List<Int>>): Int {
         element != innerElement &&
             (element % innerElement == 0 || innerElement % element == 0)
       }
-    }
-  }.map { (first, second) ->
-    max(first, second) / min(first, second)
-  }.sum()
+    }.sorted()
+  }.sumBy { (first, second) -> second / first }
 }
 
 fun main(args: Array<String>) {
