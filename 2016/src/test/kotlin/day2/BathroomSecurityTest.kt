@@ -1,22 +1,24 @@
 package day2
 
-import fromMultipleLineInput
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class BathroomSecurityTest {
 
+  private val input = listOf(
+      "ULL",
+      "RRDDD",
+      "LURDL",
+      "UUUUD"
+  )
+
   @Test
   fun testPart1ExampleInput() {
-    fromMultipleLineInput(2, "BathroomSecurityExampleInput.txt") { input ->
-      assertEquals("1985", solveCodePart1(input))
-    }
+    assertEquals("1985", solveCodePart1(input))
   }
 
   @Test
   fun testPart2ExampleInput() {
-    fromMultipleLineInput(2, "BathroomSecurityExampleInput.txt") { input ->
-      assertEquals("5DB3", solveCodePart2(input))
-    }
+    assertEquals("5DB3", solveCodePart2(input))
   }
 }
