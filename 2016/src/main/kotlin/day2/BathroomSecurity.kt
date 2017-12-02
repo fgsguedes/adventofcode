@@ -59,7 +59,7 @@ fun solveCodePart2(input: List<String>): String {
 }
 
 fun main(args: Array<String>) {
-  fromMultipleLineInput(2, "BathroomSecurityInput.txt") { input ->
+  fromMultipleLineInput(2016, 2, "BathroomSecurityInput.txt") { input ->
     println("Part 1: ${solveCodePart1(input)}")
     println("Part 2: ${solveCodePart2(input)}")
   }

@@ -45,7 +45,7 @@ fun possibleTrianglesPart2(input: List<String>): Int {
 fun sorted(vararg int: Int) = int.sorted()
 
 fun main(args: Array<String>) {
-  fromMultipleLineInput(3, "PossibleTrianglesInput.txt") { input ->
+  fromMultipleLineInput(2016, 3, "PossibleTrianglesInput.txt") { input ->
     println(possibleTrianglesPart1(input))
     println(possibleTrianglesPart2(input))
   }

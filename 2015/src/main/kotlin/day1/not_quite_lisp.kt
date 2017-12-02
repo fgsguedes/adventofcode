@@ -24,8 +24,8 @@ data class Counter(private var floor: Int = 0) {
 
 
 fun main(args: Array<String>) {
-  val targetFloor = fromOneLineInput(1, "not_quite_lisp.txt", ::computeFloor)
-  val firstBasementPosition = fromOneLineInput(1, "not_quite_lisp_part_two.txt", ::firstBasementPosition)
+  val targetFloor = fromOneLineInput(2015, 1, "not_quite_lisp.txt", ::computeFloor)
+  val firstBasementPosition = fromOneLineInput(2015, 1, "not_quite_lisp_part_two.txt", ::firstBasementPosition)
 
   println(targetFloor)
   println(firstBasementPosition)

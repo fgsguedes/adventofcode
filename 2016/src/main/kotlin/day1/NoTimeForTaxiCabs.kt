@@ -70,7 +70,7 @@ fun measureDistancePart2(input: String): Int {
 }
 
 fun main(args: Array<String>) {
-  fromOneLineInput(1, "NoTimeForTaxiCabsInput.txt") { input ->
+  fromOneLineInput(2016, 1, "NoTimeForTaxiCabsInput.txt") { input ->
     println("Part1: ${measureDistancePart1(input)}")
     println("Part2: ${measureDistancePart2(input)}")
   }

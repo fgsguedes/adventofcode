@@ -6,10 +6,10 @@ fun Int.isOdd() = this % 2 == 1
 
 data class House(val x: Int, val y: Int) {
 
-  val northNeighbor: House by lazy { House(x, y + 1) }
-  val southNeighbor: House by lazy { House(x, y - 1) }
-  val westNeighbor: House by lazy { House(x - 1, y) }
-  val eastNeighbor: House by lazy { House(x + 1, y) }
+  val northNeighbor by lazy { House(x, y + 1) }
+  val southNeighbor by lazy { House(x, y - 1) }
+  val westNeighbor by lazy { House(x - 1, y) }
+  val eastNeighbor by lazy { House(x + 1, y) }
 }
 
 fun santaAloneUniqueVisitedHouses(input: String): Int {
@@ -68,8 +68,8 @@ private fun nextHouse(currentHouse: House, moveInstruction: Char) = when (moveIn
 }
 
 fun main(args: Array<String>) {
-  val housesVisited = fromOneLineInput(3, "santa_delivery_input.txt", ::santaAloneUniqueVisitedHouses)
-  val housesVisitedWithRobot = fromOneLineInput(3, "santa_with_robot_delivery_input.txt", ::withRobotUniqueVisitedHouses)
+  val housesVisited = fromOneLineInput(2015, 3, "santa_delivery_input.txt", ::santaAloneUniqueVisitedHouses)
+  val housesVisitedWithRobot = fromOneLineInput(2015, 3, "santa_with_robot_delivery_input.txt", ::withRobotUniqueVisitedHouses)
 
   println(housesVisited)
   println(housesVisitedWithRobot)

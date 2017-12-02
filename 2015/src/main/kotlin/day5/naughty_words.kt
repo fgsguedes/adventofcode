@@ -23,7 +23,7 @@ fun String.isNice(): Boolean {
 
 
 fun main(args: Array<String>) {
-  val naughtyWords = fromMultipleLineInput(5, "naughty_words_input.txt") { fileContent ->
+  val naughtyWords = fromMultipleLineInput(2015, 5, "naughty_words_input.txt") { fileContent ->
     fileContent.filter(String::isNice).count()
   }
 
